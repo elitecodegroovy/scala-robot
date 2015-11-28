@@ -10,6 +10,10 @@ import java.util.Map;
 public class BootstrapMain {
 
     public static void main(String[] args){
+        printSysEnv();
+    }
+
+    public static void printSysEnv(){
         Map<String,String> envs = System.getenv();
         Iterator it = envs.entrySet().iterator();
         while(it.hasNext()){
