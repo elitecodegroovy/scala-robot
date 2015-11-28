@@ -1,5 +1,7 @@
 package com.wisdom;
 
+import com.wisdom.common.Thinking;
+
 import java.util.Iterator;
 import java.util.Map;
 
@@ -10,7 +12,8 @@ import java.util.Map;
 public class BootstrapMain {
 
     public static void main(String[] args){
-        printSysEnv();
+//        printSysEnv();
+        new Thinking().callThinkingInScala();
     }
 
     public static void printSysEnv(){
