@@ -42,15 +42,16 @@ public class Thinking {
     }
 
     public void callInitParameters(){
-//        Person bob =
-//                new Person("Bob", // [1]
-//                        Person.init$default$2(),
-//                        Person.init$default$3());
-//        bob.setEmail(bob.setEmail$default$1()); // [2]
-//        System.out.println(
-//                new Person("Bob", // [3]
-//                        Person.init$default$2(),
-//                        "Lausanne"));
+        Person bob =
+                new Person("Bob", // [1]
+                        28,
+                        "John");
+        System.out.println(bob);
+        bob.setEmail(bob.setEmail$default$1()); // [2]
+        System.out.println(
+                new Person("Bob", // [3]
+                        22,
+                        "Lausanne"));
     }
 
 
