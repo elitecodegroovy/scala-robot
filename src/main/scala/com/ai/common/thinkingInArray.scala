@@ -6,6 +6,10 @@ package com.ai.common
  */
 object thinkingInArray {
 
+  val MAX_LOG_SIZE = 6500
+
+  def testFunction(f : Int => Int) : Int = f(5)
+
   def Array(elems: Double*): Array[Double] = {
     val ar = new Array[Double](elems.length)
     for (i <- 0 until elems.length)
@@ -22,6 +26,9 @@ object thinkingInArray {
       .filter{case Pair(x, i) => x > limit }
       .map{case Pair(x, i) => i}
 
+  def log(msg: String): Unit ={
+    Console.println(msg)
+  }
   def main(args: Array[String]) {
     val ar = Array/*[Double]*/(6, 2, 8, 5, 1)
     printArray(ar)
