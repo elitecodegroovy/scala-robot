@@ -7,6 +7,7 @@ package com.ai.common
 class Companion {
   def hello() { println("Hello (class)") } // [1]
 }
+
 object Companion {
 
   def hallo() {
