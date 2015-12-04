@@ -16,7 +16,7 @@ class Downloader(urls: List[String])  extends Actor{
         case payload: String => {
           Actor.reply ("thank you")
           println ("content size: " + data.length)
-          data += payload + "\n\n"
+//          data += payload + "\n\n"
           count -= 1
           if (count == 0) {
             println ("Tasks has been done!")
