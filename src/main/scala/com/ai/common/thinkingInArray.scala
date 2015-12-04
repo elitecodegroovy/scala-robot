@@ -34,6 +34,10 @@ object thinkingInArray {
     printArray(ar)
     println("Elements greater than 3.0:")
     findGreater(ar, 3.0) foreach { x => println( ar(x)) }
+
+    var x : Option[String] = Option(null)
+    println(x)
+    x = Option("initialized")
   }
 
 }
