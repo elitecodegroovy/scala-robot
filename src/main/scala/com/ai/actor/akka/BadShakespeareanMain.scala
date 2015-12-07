@@ -2,7 +2,8 @@ package com.ai.actor.akka
 
 import akka.actor.{Props, ActorSystem}
 
-/**
+/**  An atypical example
+ *
  * @author john.grails@gmail.com
  * @since  2015/12/6..
  */
