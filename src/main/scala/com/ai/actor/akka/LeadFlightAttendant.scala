@@ -29,10 +29,11 @@ class LeadFlightAttendant extends Actor { this: AttendantCreationPolicy =>
   override def preStart(): Unit ={
     import scala.collection.JavaConverters._
     val attendantNames = context.system.settings.config.getStringList(
-      "zzz.akka.avionics.flightcrew.attendantNames").asScala
+      "com.akka.avionics.flightcrew.attendantNames").asScala
     attendantNames take numberOfAttendants foreach { i =>
       // We create the actors within our context such that they are
       // children of this Actor
+      Console.println(s"--${numberOfAttendants} attendant name: ${i} ")
       context.actorOf(Props(createAttendant), i)
     }
   }
