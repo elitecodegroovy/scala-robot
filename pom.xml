@@ -96,13 +96,29 @@
         in the test frameworks ScalaTest and specs2. You can of course also use
         ScalaCheck completely standalone, with its built-in test runner.
       -->
+       <!--test jar dependencies-->
       <dependency>
           <groupId>org.scalacheck</groupId>
           <artifactId>scalacheck_2.10</artifactId>
           <version>1.12.5</version>
       </dependency>
+      <dependency>
+          <groupId>org.scalatest</groupId>
+          <artifactId>scalatest_2.10</artifactId>
+          <version>3.0.0-M8</version>
+      </dependency>
+      <dependency>
+          <groupId>com.typesafe.akka</groupId>
+          <artifactId>akka-actor_2.10</artifactId>
+          <version>2.3.14</version>
+      </dependency>
+      <dependency>
+          <groupId>com.typesafe.akka</groupId>
+          <artifactId>akka-testkit_2.10</artifactId>
+          <version>2.3.14</version>
+      </dependency>
 
-    <dependency>
+      <dependency>
       <groupId>org.specs</groupId>
       <artifactId>specs</artifactId>
       <version>1.2.5</version>
