@@ -10,6 +10,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
  * @author liujignag@biostime.com
  * @since 1.6
  */
+
 object FlightAttendant {
   case class GetDrink(drinkname: String)
   case class Drink(drinkname: String)

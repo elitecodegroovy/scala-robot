@@ -18,6 +18,8 @@ object Avionics {
   implicit val timeout = Timeout(Duration(5, TimeUnit.SECONDS))
   val system = ActorSystem("PlaneSimulation")
   val plane = system.actorOf(Props[Plane], "Plane")
+  println(s"----plane path:${plane.path}, name :${plane.path.name}")
+  println(s"----plane address:${plane.path.address.toString}")
 
   def main(args: Array[String]) {
     // Grab the controls

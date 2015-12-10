@@ -6,5 +6,5 @@ package com.ai.actor.akka
  */
 trait AttendantResponsiveness {
   val maxResponseTimeMS: Int
-  def responseDuration = scala.util.Random.nextInt(maxResponseTimeMS).max(60000)
+  def responseDuration = scala.util.Random.nextInt(maxResponseTimeMS)
 }
