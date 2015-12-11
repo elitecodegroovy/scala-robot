@@ -24,7 +24,7 @@ class Pilot( plane: ActorRef
 
   var copilot: ActorRef = context.system.deadLetters
   val copilotName = context.system.settings.config.getString(
-    "zzz.akka.avionics.flightcrew.copilotName")
+    "com.akka.avionics.flightcrew.copilotName")
 
   def receive = {
     case ReadyToGo =>
@@ -45,7 +45,7 @@ class CoPilot ( plane: ActorRef
 
   var pilot: ActorRef = context.system.deadLetters
   val pilotName = context.system.settings.config.getString(
-    "zzz.akka.avionics.flightcrew.pilotName")
+    "com.akka.avionics.flightcrew.pilotName")
 
   def receive = {
     case ReadyToGo =>
