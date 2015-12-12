@@ -181,6 +181,7 @@ class MultiExec extends WordSpecLike with MustMatchers{
       }.onFailure {
         case _ => println("onFailure Boogers! That didn't work.")
       }
+
       // Prints: Boogers! That didn't work.
     }
   }
