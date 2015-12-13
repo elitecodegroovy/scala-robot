@@ -60,7 +60,7 @@ public class CallingFunc {
             none.get();
             Assert.fail();
         } catch(Exception e) {
-// yup... it threw
+            e.printStackTrace();
         }
         Assert.assertFalse(none.iterator().hasNext());
     }
