@@ -2,6 +2,8 @@ package com.ai.concurrent
 
 import java.util.concurrent.TimeUnit
 
+import akka.actor.{Actor, ActorSystem, Props}
+import akka.testkit.TestActors.EchoActor
 import org.scalatest.{MustMatchers, WordSpecLike}
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.Duration
@@ -183,6 +185,30 @@ class MultiExec extends WordSpecLike with MustMatchers{
       }
 
       // Prints: Boogers! That didn't work.
+    }
+  }
+
+  "sender ! response" should {
+    "akka future " in {
+      import akka.pattern.ask
+      import akka.util.Timeout
+      // All 'asks' (a.k.a '?') need a timeout value
+      // after which the ask is considered failed.
+      val system = ActorSystem("EchoPrint")
+      implicit val askTimeout = Timeout(Duration(1, TimeUnit.SECONDS))
+      // Create our Actor
+      val a = system.actorOf(Props[EchoActor])
+      // Make the Ask
+      val f = a ? "Echo this back"
+      // Verify the result
+      val result = Await.result(f, Duration(1, TimeUnit.SECONDS))
+      result must be ("Echo this back")
+      system.shutdown()
+    }
+  }
+
+  "Akka future" should {
+    "akka future delay" in {
     }
   }
 }
