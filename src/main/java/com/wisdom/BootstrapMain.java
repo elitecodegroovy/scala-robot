@@ -1,6 +1,10 @@
 package com.wisdom;
 
+import akka.japi.Function;
+import akka.japi.Function2;
+import com.wisdom.common.CallingFunc;
 import com.wisdom.common.Thinking;
+import org.testng.Assert;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -14,6 +18,9 @@ public class BootstrapMain {
     public static void main(String[] args){
 //        printSysEnv();
         new Thinking().callThinkingInScala();
+
+        CallingFunc func = new CallingFunc();
+        func.callFunc();
     }
 
     public static void printSysEnv(){
@@ -24,4 +31,6 @@ public class BootstrapMain {
             System.out.println("k: "+ entry.getKey() +", v:"+ entry.getValue());
         }
     }
+
+
 }
