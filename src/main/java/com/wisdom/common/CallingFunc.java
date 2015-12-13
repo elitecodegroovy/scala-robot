@@ -53,7 +53,6 @@ public class CallingFunc {
         Assert.assertEquals("Something", opt.iterator().next());
 // When the Option has nothing
         Option<String> none = Option.none();
-
 // Or equivalently: Option.option(null);
         Assert.assertFalse(none.isDefined());
         Assert.assertTrue(none.isEmpty());
