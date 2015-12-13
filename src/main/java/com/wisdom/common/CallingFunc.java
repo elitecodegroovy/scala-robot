@@ -56,12 +56,12 @@ public class CallingFunc {
 // Or equivalently: Option.option(null);
         Assert.assertFalse(none.isDefined());
         Assert.assertTrue(none.isEmpty());
-        try {
-            none.get();
-            Assert.fail();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            none.get();
+//            Assert.fail();
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
         Assert.assertFalse(none.iterator().hasNext());
     }
 
