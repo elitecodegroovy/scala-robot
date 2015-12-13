@@ -65,6 +65,9 @@ public class CallingFunc {
         Assert.assertFalse(none.iterator().hasNext());
     }
 
+    /**
+     * mapper function
+     */
     public void callMapper(){
         Mapper<Integer, String> f = new Mapper<Integer, String>() {
             public String apply(Integer i) {
