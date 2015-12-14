@@ -18,7 +18,6 @@ class TeacherActor extends Actor with ActorLogging {
     "You never gonna know if you never even try")
 
   def receive = {
-
     case QuoteRequest(j) => {
 
       log.info(s"--request parameter: $j")
@@ -31,10 +30,8 @@ class TeacherActor extends Actor with ActorLogging {
 
       //Get a random Quote from the list and construct a response
 
-
       //respond back to the Student who is the original sender of QuoteRequest
       sender ! quoteResponse
-
     }
   }
 }
