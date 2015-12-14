@@ -10,12 +10,11 @@ import com.ai.actor.akka.reqresp.protocol.TeacherProtocol.{QuoteResponse, QuoteR
 
 class TeacherActor extends Actor with ActorLogging {
 
-
-  val quotes = List(
-    "Moderation is for cowards",
-    "Anything worth doing is worth overdoing",
-    "The trouble is you think you have time",
-    "You never gonna know if you never even try")
+  val indexMap = scala.collection.immutable.Map(
+    0 -> "Moderation is for cowards",
+    1 -> "Anything worth doing is worth overdoing",
+    2 -> "The trouble is you think you have time",
+    3 -> "You never gonna know if you never even try")
 
   def receive = {
     case QuoteRequest(j) => {
@@ -23,9 +22,9 @@ class TeacherActor extends Actor with ActorLogging {
       log.info(s"--request parameter: $j")
       var quoteResponse = QuoteResponse("")
       if(j < 0 || j > 3){
-        quoteResponse = QuoteResponse(s" $j beyond the array index.")
+        quoteResponse = QuoteResponse(s"can't get the related value with index value $j")
       }else {
-        quoteResponse = QuoteResponse(quotes(j))
+        quoteResponse = QuoteResponse(indexMap(j))
       }
 
       //Get a random Quote from the list and construct a response
