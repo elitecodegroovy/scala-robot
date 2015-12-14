@@ -1,0 +1,25 @@
+package com.ai.actor.akka.reqresp.protocol
+
+/**
+ * @author liujignag@biostime.com
+ * @since 1.6
+ */
+/*
+ * It's just nice to have a object wrap all your `messages` in a
+ * nice little object - Purely for management
+ *
+ * Messages are predominantly case classes because of all the goodies that
+ * come along with it
+ */
+
+object StudentProtocol{
+
+  /*
+   * the Driver App issues this signal to ask the
+   * Student actor to send message to Teacher Actor
+   *
+   */
+  case class InitSignal(i: Int)
+
+
+}
