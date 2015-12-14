@@ -22,16 +22,15 @@ class StudentDelayedActor (teacherActorRef:ActorRef) extends Actor with ActorLog
      * On receipt and after 5 seconds, the Student sends a message to the Teacher actor.
      * The teacher actor on receipt of the QuoteRequest responds with a QuoteResponse
      */
-    case InitSignal => {
+    case InitSignal(j) => {
       import context.dispatcher
       //context.system.scheduler.scheduleOnce(5 seconds, teacherActorRef, QuoteRequest)
-      context.system.scheduler.schedule(0 seconds, 5 seconds, teacherActorRef, QuoteRequest)
+      context.system.scheduler.schedule(0 seconds, 5 seconds, teacherActorRef, QuoteRequest(j))
       //teacherActorRef!QuoteRequest
     }
 
     case QuoteResponse(quoteString) => {
-      log.info ("Received QuoteResponse from Teacher")
-      log.info(s"Printing from Student Actor $quoteString")
+      log.info (s"Received QuoteResponse from Teacher. Printing from Student Actor[ $quoteString]")
     }
 
   }
