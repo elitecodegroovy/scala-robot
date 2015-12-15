@@ -12,28 +12,35 @@ import scala.util.Random
 
 class QuoteRepositoryActor() extends Actor with ActorLogging {
 
-  val quotes = List(
-    "Moderation is for cowards",
-    "Anything worth doing is worth overdoing",
-    "The trouble is you think you have time",
-    "You never gonna know if you never even try")
+  var quotesMap = scala.collection.Map(
+    0 -> "Moderation is for cowards",
+    1 -> "Anything worth doing is worth overdoing",
+    2 -> "The trouble is you think you have time",
+    3 -> "The trouble is you think you have time"
+   )
 
   var repoRequestCount:Int=1
 
   def receive = {
 
-    case QuoteRepositoryRequest => {
+    case QuoteRepositoryRequest(i) => {
 
       if (repoRequestCount > 3){
         self!PoisonPill
       }
       else {
         //Get a random Quote from the list and construct a response
-        val random =  Random.nextInt(quotes.size);
-        val quoteResponse = QuoteRepositoryResponse(quotes(random))
+        var number :Int = 0
+        if(i < 0 || i > 3){
+          number =  Random.nextInt(quotesMap.size)
+        }else{
+          number = i
+        }
+
+        val quoteResponse = QuoteRepositoryResponse(quotesMap(number))
 
         log.info(s"-------------------------------------------------------\n" +
-          s"Sending response to Teacher Actor $random: $quoteResponse")
+          s"Sending response to Teacher Actor $number: $quoteResponse")
         repoRequestCount = repoRequestCount + 1
         sender ! quoteResponse
       }

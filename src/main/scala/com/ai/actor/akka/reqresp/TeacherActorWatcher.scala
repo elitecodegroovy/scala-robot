@@ -15,8 +15,8 @@ class TeacherActorWatcher extends Actor with ActorLogging {
 
 
   def receive = {
-    case QuoteRequest => {
-      quoteRepositoryActor ! QuoteRepositoryRequest
+    case QuoteRequest(j) => {
+      quoteRepositoryActor ! QuoteRepositoryRequest(j)
     }
     case Terminated(terminatedActorRef)=>{
       log.error(s"++++++++++++++++++++++++\nChild Actor {$terminatedActorRef} Terminated")

@@ -1,12 +1,13 @@
-package com.ai
+package com.ai.actor.akka
 
 import akka.actor.ActorSystem
 import akka.testkit._
+import com.ai.actor.akka.reqresp.protocol.QuoteRepositoryProtocol.{QuoteRepositoryRequest, QuoteRepositoryResponse}
 import com.ai.actor.akka.reqresp.protocol.TeacherProtocol.QuoteRequest
-import com.ai.actor.akka.reqresp.{TeacherActorWatcher, QuoteRepositoryActor}
-import com.ai.actor.akka.reqresp.protocol.QuoteRepositoryProtocol.{QuoteRepositoryResponse, QuoteRepositoryRequest}
+import com.ai.actor.akka.reqresp.{QuoteRepositoryActor, TeacherActorWatcher}
 import com.typesafe.config.ConfigFactory
 import org.scalatest.{MustMatchers, WordSpecLike}
+
 import scala.concurrent.duration._
 
 /**
@@ -31,7 +32,7 @@ with ImplicitSender {
 
       within (1000 millis) {
         var receivedQuotes = List[String]()
-        (1 to 3).foreach(_ => quoteRepository ! QuoteRepositoryRequest)
+        (1 to 3).foreach(i => quoteRepository ! QuoteRepositoryRequest(i))
 
         receiveWhile() {
           case QuoteRepositoryResponse(quoteString) => {
@@ -52,7 +53,7 @@ with ImplicitSender {
 
       within (1000 millis) {
         var receivedQuotes = List[String]()
-        (1 to 3).foreach(_ => quoteRepository ! QuoteRepositoryRequest)
+        (1 to 3).foreach(i => quoteRepository ! QuoteRepositoryRequest(i))
         receiveWhile() {
           case QuoteRepositoryResponse(quoteString) => {
             receivedQuotes = receivedQuotes :+ quoteString
@@ -76,7 +77,7 @@ with ImplicitSender {
 
       within (1000 millis) {
         var receivedQuotes = List[String]()
-        (1 to 3).foreach(_ => quoteRepository ! QuoteRepositoryRequest)
+        (1 to 3).foreach(i => quoteRepository ! QuoteRepositoryRequest(i))
         receiveWhile() {
           case QuoteRepositoryResponse(quoteString) => {
             receivedQuotes = receivedQuotes :+ quoteString
@@ -99,7 +100,7 @@ with ImplicitSender {
       val teacherActor=TestActorRef[TeacherActorWatcher]
 
       within (1000 millis) {
-        (1 to 3).foreach (_=>teacherActor!QuoteRequest) //this sends a message to the QuoteRepositoryActor
+        (1 to 3).foreach (i =>teacherActor!QuoteRequest(i)) //this sends a message to the QuoteRepositoryActor
 
         EventFilter.error (pattern="""Child Actor .* Terminated""", occurrences = 1).intercept{
           teacherActor!QuoteRequest //Send the dangerous 4th message

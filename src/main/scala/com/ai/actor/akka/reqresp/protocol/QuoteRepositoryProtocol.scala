@@ -6,7 +6,7 @@ package com.ai.actor.akka.reqresp.protocol
  */
 object QuoteRepositoryProtocol{
 
-  case class QuoteRepositoryRequest()
+  case class QuoteRepositoryRequest(i: Int)
   case class QuoteRepositoryResponse(quoteString:String)
 
 }
