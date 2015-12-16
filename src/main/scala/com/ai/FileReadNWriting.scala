@@ -29,7 +29,8 @@ bw.close()
     val filename = "/shop_code.txt"
     val file = Source.fromURL(getClass.getResource(filename))
     for (line <- file.getLines()) {
-      pw.write("INSERT INTO PAS_SHOP(SHOP_CODE, CREATED_DATE, CREATED_BY, HAS_ACTIVITY, PAS_DEF_ID, PAS_DEF_PARENT_ID)\nVALUES( '" + line + "', now(), '12516', false, 372, -1 );\n")
+      pw.write("INSERT INTO PAS_SHOP(SHOP_CODE, CREATED_DATE, CREATED_BY, HAS_ACTIVITY, PAS_DEF_ID, PAS_DEF_PARENT_ID)\n" +
+        "VALUES( '" + line + "', now(), '12516', true, 1678, 1678);\n")
     }
   }catch {
     case ex: FileNotFoundException => println("Couldn't find that file.")
